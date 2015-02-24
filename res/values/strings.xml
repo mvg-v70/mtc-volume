@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MTC-Volume</string>
+    <string name="app_descr">Microntek device volume service</string>
+    <string name="app_service_title">MTC-Volume service</string>
+    <string name="app_service_on">Service is on</string>
+    <string name="app_starting">is starting now</string>
+    <string name="app_settings">Settings</string>
+    
+    <string name="ui_service_enable">Service enable</string>
+    <string name="ui_version_title">Version</string>
+    <string name="ui_settings_button">Settings</string>
+    
+    <string name="toast_player_paused">PAUSE</string>
+    <string name="toast_safevolume_set">Safe volume restored</string>
+    <string name="toast_volume_speed_set">Volume</string>
+    <string name="toast_volume_app_corr">Volume correction</string>
+    <string name="toast_brightness_change">Brightness adjusted</string>
+    
+    <string name="ui_adv_settings_calls">Bluetooth Calls</string>
+    <string name="ui_adv_settings_calls_enable_text">Pause at incoming/outgoing calls</string>
+    <string name="ui_adv_settings_calls_enable_title">Pause on bluetooth calls</string>
+    <string name="ui_adv_settings_calls_toast_text">Show notifications</string>
+    <string name="ui_adv_settings_calls_toast_title">Show toast notifications</string>
+    
+    <string name="ui_adv_settings_safevolume">Power On Volume</string>
+    <string name="ui_adv_settings_safevolume_enable_text">Set safe power on volume</string>
+    <string name="ui_adv_settings_safevolume_enable_title">Set volume after device power on/wake up if greater then safe level</string>
+    <string name="ui_adv_settings_safevolume_level_text">Safe volume level</string>
+    <string name="ui_adv_settings_safevolume_level_title">Safe volume level at device start</string>
+    <string name="ui_adv_settings_safevolume_toast_text">Show notifications</string>
+    <string name="ui_adv_settings_safevolume_toast_title">Show toast notifications</string>
+    
+    <string name="ui_adv_settings_speedvol">Speed volume</string>
+    <string name="ui_adv_settings_speedvol_enable_text">Enable volume by speed adjust</string>
+    <string name="ui_adv_settings_speedvol_enable_title">Ajust volume depends on vehicle speed</string>
+    <string name="ui_adv_settings_speedvol_speed_title">Speed edges</string>
+    <string name="ui_adv_settings_speedvol_speed_text">Speed values to up/down volume</string>
+    <string name="ui_adv_settings_speedvol_level_title">Change level</string>
+    <string name="ui_adv_settings_speedvol_level_text">Volume level value to change on every step</string>
+    <string name="ui_adv_settings_speedvol_toast_text">Show notifications</string>
+    <string name="ui_adv_settings_speedvol_toast_title">Show toast notifications</string>
+    
+    <string name="ui_adv_settings_appvol">Separate apps volume</string>
+    <string name="ui_adv_settings_appvol_enable_text">Enable separate apps volume</string>
+    <string name="ui_adv_settings_appvol_enable_title">Separate volume for each MTC applications</string>
+    <string name="ui_adv_settings_appvol_toast_text">Show notifications</string>
+    <string name="ui_adv_settings_appvol_toast_title">Show toast notifications</string>
+    
+    <string name="ui_adv_settings_apps_levels_text">Application adjust levels</string>
+    <string name="ui_adv_settings_apps_levels_title">Set volume adjust level for each application</string>
+    <string name="ui_adv_settings_apps_radio_text">Radio</string>
+    <string name="ui_adv_settings_apps_radio_title">Correction for Radio app</string>
+    <string name="ui_adv_settings_apps_music_text">Music</string>
+    <string name="ui_adv_settings_apps_music_title">Correction for Music app</string>
+    <string name="ui_adv_settings_apps_dvd_text">DVD</string>
+    <string name="ui_adv_settings_apps_dvd_title">Correction for DVD app</string>
+    <string name="ui_adv_settings_apps_avin_text">AV In</string>
+    <string name="ui_adv_settings_apps_avin_title">Correction for AV In app</string>
+    <string name="ui_adv_settings_apps_ipod_text">IPod</string>
+    <string name="ui_adv_settings_apps_ipod_title">Correction for IPod app</string>
+    
+    <string name="ui_adv_settings_incorrect_text">incorrect symbols for</string>
+    
+    <string name="ui_adv_settings_navitel">Navitel</string>
+    <string name="ui_adv_settings_navitel_enable_text">Close on power off</string>
+    <string name="ui_adv_settings_navitel_enable_title">Close Navitel service when device power off</string>
+    
+    <string name="ui_adv_settings_bright">Screen Brightness</string>
+    <string name="ui_adv_settings_bright_enable_text">Change screen brightness by GPS</string>
+    <string name="ui_adv_settings_bright_enable_title">Change screen day and night brightness by GPS sunrise and sunset</string>
+    <string name="ui_adv_settings_bright_night_level_text">Night level</string>
+    <string name="ui_adv_settings_bright_night_level_title">Night level from 1 to 100</string>
+    <string name="ui_adv_settings_bright_day_level_text">Day level</string>
+    <string name="ui_adv_settings_bright_day_level_title">Day level from 1 to 100</string>
+    <string name="ui_adv_settings_bright_toast_text">Show notifications</string>
+    <string name="ui_adv_settings_bright_toast_title">Show toast notifications</string>
+        
+</resources>

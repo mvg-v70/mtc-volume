@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <PreferenceCategory
+        android:key="cat_calls"
+        android:summary=""
+        android:title="@string/ui_adv_settings_calls" >
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="calls.enable"
+            android:summary="@string/ui_adv_settings_calls_enable_text"
+            android:title="@string/ui_adv_settings_calls_enable_title" >
+        </SwitchPreference>
+        <SwitchPreference
+            android:defaultValue="true"
+            android:dependency="calls.enable"
+            android:key="calls.toast"
+            android:title="@string/ui_adv_settings_calls_toast_text" 
+            android:summary="@string/ui_adv_settings_calls_toast_title" >
+        </SwitchPreference>
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+        android:key="cat_safevolume"
+        android:summary=""
+        android:title="@string/ui_adv_settings_safevolume" >
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="safevolume.enable"
+            android:title="@string/ui_adv_settings_safevolume_enable_text" 
+            android:summary="@string/ui_adv_settings_safevolume_enable_title" >
+        </SwitchPreference>
+        <EditTextPreference
+            android:defaultValue="@integer/cfg_def_safevolume_level"
+            android:inputType="number"
+            android:dependency="safevolume.enable"
+            android:key="safevolume.level"
+            android:title="@string/ui_adv_settings_safevolume_level_text"
+            android:summary="@string/ui_adv_settings_safevolume_level_title" > 
+        </EditTextPreference>
+        <SwitchPreference
+            android:defaultValue="true"
+            android:dependency="safevolume.enable"
+            android:key="safevolume.toast"
+            android:title="@string/ui_adv_settings_safevolume_toast_text"
+            android:summary="@string/ui_adv_settings_safevolume_toast_title" >
+        </SwitchPreference>
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+        android:key="cat_speed"
+        android:summary=""
+        android:title="@string/ui_adv_settings_speedvol" >
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="speed.enable"
+            android:title="@string/ui_adv_settings_speedvol_enable_text" 
+            android:summary="@string/ui_adv_settings_speedvol_enable_title" >
+        </SwitchPreference>
+        <EditTextPreference
+            android:defaultValue="@string/cfg_def_speed_values"
+            android:dependency="speed.enable"
+            android:key="speed.speedrange"
+            android:summary="@string/ui_adv_settings_speedvol_speed_text"
+            android:title="@string/ui_adv_settings_speedvol_speed_title" >
+        </EditTextPreference>
+        <EditTextPreference
+            android:defaultValue="1"
+            android:inputType="number"
+            android:dependency="speed.enable"
+            android:key="speed.speedvol"
+            android:summary="@string/ui_adv_settings_speedvol_level_text"
+            android:title="@string/ui_adv_settings_speedvol_level_title" >
+        </EditTextPreference>
+        <SwitchPreference
+            android:defaultValue="true"
+            android:dependency="speed.enable"
+            android:key="speed.toast"
+            android:title="@string/ui_adv_settings_speedvol_toast_text" 
+            android:summary="@string/ui_adv_settings_speedvol_toast_title" >
+        </SwitchPreference>
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+        android:key="cat_apps"
+        android:summary=""
+        android:title="@string/ui_adv_settings_appvol" >
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="apps.enable"
+            android:title="@string/ui_adv_settings_appvol_enable_text" 
+            android:summary="@string/ui_adv_settings_appvol_enable_title" >
+        </SwitchPreference>
+        
+        <PreferenceScreen
+            android:key="apps.levels"
+            android:title="@string/ui_adv_settings_apps_levels_text"
+            android:dependency="apps.enable"
+            android:summary="@string/ui_adv_settings_apps_levels_title">
+
+            <EditTextPreference
+              android:defaultValue="0"
+            	android:inputType="numberSigned"
+             	android:key="apps.radio.level"
+            	android:title="@string/ui_adv_settings_apps_radio_text"
+            	android:summary="@string/ui_adv_settings_apps_radio_title" >
+        	 </EditTextPreference>
+        	 <EditTextPreference
+            	android:defaultValue="0"
+            	android:inputType="numberSigned"
+             	android:key="apps.music.level"
+            	android:title="@string/ui_adv_settings_apps_music_text"
+            	android:summary="@string/ui_adv_settings_apps_music_title" >
+        	 </EditTextPreference>
+        	 <EditTextPreference
+            	android:defaultValue="0"
+            	android:inputType="numberSigned"
+             	android:key="apps.dvd.level"
+            	android:title="@string/ui_adv_settings_apps_dvd_text"
+            	android:summary="@string/ui_adv_settings_apps_dvd_title" >
+        	 </EditTextPreference>
+        	 <EditTextPreference
+            	android:defaultValue="0"
+            	android:inputType="numberSigned"
+             	android:key="apps.avin.level"
+            	android:title="@string/ui_adv_settings_apps_avin_text"
+            	android:summary="@string/ui_adv_settings_apps_avin_title" >
+        	 </EditTextPreference>
+        	 <EditTextPreference
+            	android:defaultValue="0"
+            	android:inputType="numberSigned"
+             	android:key="apps.ipod.level"
+            	android:title="@string/ui_adv_settings_apps_ipod_text"
+            	android:summary="@string/ui_adv_settings_apps_ipod_title" >
+        	 </EditTextPreference>
+        </PreferenceScreen>
+		
+        <SwitchPreference
+            android:defaultValue="true"
+            android:dependency="apps.enable"
+            android:key="apps.toast"
+            android:title="@string/ui_adv_settings_appvol_toast_text"
+            android:summary="@string/ui_adv_settings_appvol_toast_title" >
+        </SwitchPreference>
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+        android:key="cat_navitel"
+        android:summary=""
+        android:title="@string/ui_adv_settings_navitel" >
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="navitel.enable"
+            android:title="@string/ui_adv_settings_navitel_enable_text" 
+            android:summary="@string/ui_adv_settings_navitel_enable_title" >
+        </SwitchPreference>
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+        android:key="cat_bright"
+        android:summary=""
+        android:title="@string/ui_adv_settings_bright" >
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="brightness.enable"
+            android:title="@string/ui_adv_settings_bright_enable_text" 
+            android:summary="@string/ui_adv_settings_bright_enable_title" >
+        </SwitchPreference>
+        <EditTextPreference
+            android:defaultValue="@integer/cfg_def_brightness_night_level"
+            android:inputType="number"
+            android:dependency="brightness.enable"
+            android:key="brightness.night"
+            android:title="@string/ui_adv_settings_bright_night_level_text"
+            android:summary="@string/ui_adv_settings_bright_night_level_title" >
+        </EditTextPreference>
+        <EditTextPreference
+            android:defaultValue="@integer/cfg_def_brightness_day_level"
+            android:inputType="number"
+            android:dependency="brightness.enable"
+            android:key="brightness.day"
+            android:title="@string/ui_adv_settings_bright_day_level_text"
+            android:summary="@string/ui_adv_settings_bright_day_level_title" >
+        </EditTextPreference>
+        <SwitchPreference
+            android:defaultValue="true"
+            android:dependency="brightness.enable"
+            android:key="brightness.toast"
+            android:title="@string/ui_adv_settings_bright_toast_text" 
+            android:summary="@string/ui_adv_settings_bright_toast_title" >
+        </SwitchPreference>
+    </PreferenceCategory>
+    
+</PreferenceScreen>

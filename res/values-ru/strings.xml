@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MTC-Volume</string>
+    <string name="app_descr">Microntek сервис звука магнитолы</string>
+    <string name="app_service_title">MTC-Volume сервис</string>
+    <string name="app_service_on">Сервис работает</string>
+    <string name="app_starting">запускается</string>
+    <string name="app_settings">Настройки</string>
+    
+    <string name="ui_service_enable">Сервис включен</string>
+    <string name="ui_version_title">Версия</string>
+    <string name="ui_settings_button">Настройки</string>
+    
+    <string name="toast_player_paused">ПАУЗА</string>
+    <string name="toast_safevolume_set">Установлен безопасный уровень громкости</string>
+    <string name="toast_volume_speed_set">Громкость</string>
+    <string name="toast_volume_app_corr">Коррекция громкости</string>
+    <string name="toast_brightness_change">Коррекция яркости экрана</string>
+    
+    <string name="ui_adv_settings_calls">Bluetooth звонки</string>
+    <string name="ui_adv_settings_calls_enable_text">Пауза при входящем/исходящем звонках</string>
+    <string name="ui_adv_settings_calls_enable_title">Пауза при звонках</string>
+    <string name="ui_adv_settings_calls_toast_text">Показывать уведомления</string>
+    <string name="ui_adv_settings_calls_toast_title">Показывать короткие пояснения при включении паузы</string>
+    
+    <string name="ui_adv_settings_safevolume">Безопасная громкость</string>
+    <string name="ui_adv_settings_safevolume_enable_text">Установить при включении</string>
+    <string name="ui_adv_settings_safevolume_enable_title">Установить безопасную громкость при включении</string>
+    <string name="ui_adv_settings_safevolume_level_text">Уровень безопасной громкости</string>
+    <string name="ui_adv_settings_safevolume_level_title">Уровень безопасной громкости при включении</string>
+    <string name="ui_adv_settings_safevolume_toast_text">Показывать уведомления</string>
+    <string name="ui_adv_settings_safevolume_toast_title">Показывать короткие пояснения при установке безопасной громкости</string>
+    
+    <string name="ui_adv_settings_speedvol">Компенсация громкости от скорости</string>
+    <string name="ui_adv_settings_speedvol_enable_text">Компенсация</string>
+    <string name="ui_adv_settings_speedvol_enable_title">Настраивать громкость от скорости</string>
+    <string name="ui_adv_settings_speedvol_speed_title">Шаги регулировки</string>
+    <string name="ui_adv_settings_speedvol_speed_text">Значения скорости для увеличинения/уменьшения громкости</string>
+    <string name="ui_adv_settings_speedvol_level_title">Степень регулировки</string>
+    <string name="ui_adv_settings_speedvol_level_text">Насколько сильно громкость меняется на каждом шаге</string>
+    <string name="ui_adv_settings_speedvol_toast_text">Показывать уведомления</string>
+    <string name="ui_adv_settings_speedvol_toast_title">Показывать короткие пояснения при коррекции громкости</string>
+    
+    <string name="ui_adv_settings_appvol">Громкость в приложениях</string>
+    <string name="ui_adv_settings_appvol_enable_text">Коррекция громкости приложений</string>
+    <string name="ui_adv_settings_appvol_enable_title">Коррекция громкости стандартных приложений</string>
+    <string name="ui_adv_settings_appvol_toast_text">Показывать уведомления</string>
+    <string name="ui_adv_settings_appvol_toast_title">Показывать короткие пояснения при коррекции громкости</string>
+    
+    <string name="ui_adv_settings_apps_levels_text">Уровни громкости приложений</string>
+    <string name="ui_adv_settings_apps_levels_title"> Устнановка уровней коррекции громкостей для приложений</string>
+    <string name="ui_adv_settings_apps_radio_text">Радио</string>
+    <string name="ui_adv_settings_apps_radio_title">Коррекция громкости для Радио</string>
+    <string name="ui_adv_settings_apps_music_text">Музыка</string>
+    <string name="ui_adv_settings_apps_music_title">Коррекция громкости для Музыка</string>
+    <string name="ui_adv_settings_apps_dvd_text">DVD</string>
+    <string name="ui_adv_settings_apps_dvd_title">Коррекция громкости для DVD</string>
+    <string name="ui_adv_settings_apps_avin_text">AV Вход</string>
+    <string name="ui_adv_settings_apps_avin_title">Коррекция громкости для AV Вход</string>
+    <string name="ui_adv_settings_apps_ipod_text">IPod</string>
+    <string name="ui_adv_settings_apps_ipod_title">Коррекция громкости для IPod</string>
+    
+    <string name="ui_adv_settings_incorrect_text">неверно введено значение</string>    
+    
+    <string name="ui_adv_settings_navitel">Навител</string>
+    <string name="ui_adv_settings_navitel_enable_text">Закрыть при выключении</string>
+    <string name="ui_adv_settings_navitel_enable_title">Закрыть сервис Навител при выключении магнитолы</string>
+    
+    <string name="ui_adv_settings_bright">Яркость экрана</string>
+    <string name="ui_adv_settings_bright_enable_text">Изменять яркость экрана по GPS</string>
+    <string name="ui_adv_settings_bright_enable_title">Изменять яркость экрана при восходе и закате по координатам GPS</string>
+    <string name="ui_adv_settings_bright_night_level_text">Ночной уровень</string>
+    <string name="ui_adv_settings_bright_night_level_title">Ночной уровень от 1 до 100</string>
+    <string name="ui_adv_settings_bright_day_level_text">Дневной уровень</string>
+    <string name="ui_adv_settings_bright_day_level_title">Дневной уровень от 1 до 100</string>
+    <string name="ui_adv_settings_bright_toast_text">Показывать уведомления</string>
+    <string name="ui_adv_settings_bright_toast_title">Показывать короткие пояснения при коррекции яркости</string>
+</resources>
