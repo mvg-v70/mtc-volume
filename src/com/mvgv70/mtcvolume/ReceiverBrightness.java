@@ -28,8 +28,9 @@ public class ReceiverBrightness extends BroadcastReceiver {
     }
     else
     {
-      // установить €ркость по старым настройкам при старте сервиса com.microntek.srartup
-      settings.setTimeBrightness();
+      // установить €ркость по старым настройкам при старте сервиса
+      if (settings.setTimeBrightness())
+        settings.showBrightnessToast(context.getString(R.string.toast_brightness_change));
     }
   }
   

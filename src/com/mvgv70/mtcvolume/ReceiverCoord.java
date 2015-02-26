@@ -34,7 +34,6 @@ public class ReceiverCoord extends BroadcastReceiver {
   @Override
   public void onReceive(Context context, Intent intent)
   {
-    Log.d(Settings.LOG_ID, "ReceiverCoord.onReceive");
     Settings settings = Settings.get(context);
     if (!intent.hasExtra(LocationManager.KEY_LOCATION_CHANGED)) return;
     Location location = (Location)intent.getExtras().get(LocationManager.KEY_LOCATION_CHANGED);
@@ -42,20 +41,16 @@ public class ReceiverCoord extends BroadcastReceiver {
     if (!settings.getBrightnessEnable()) return;
     // определим время рассвета и заката
     com.luckycatlabs.sunrisesunset.dto.Location gpslocation = new com.luckycatlabs.sunrisesunset.dto.Location(location.getLatitude(), location.getLongitude());
-   	SunriseSunsetCalculator calc = new SunriseSunsetCalculator(gpslocation,TimeZone.getDefault());
-   	String sunrise = calc.getOfficialSunriseForDate(Calendar.getInstance());
-   	String sunset = calc.getOfficialSunsetForDate(Calendar.getInstance());
-   	Log.d(Settings.LOG_ID, "sunrise="+sunrise+", sunset="+sunset);
-   	// сохраним время рассвета и заката
-   	saveSunriseSunset(settings, sunrise, sunset);
-   	// изменим текущую яркость
-   	settings.setTimeBrightness();
-   	// установим таймеры восхода и захода
+    SunriseSunsetCalculator calc = new SunriseSunsetCalculator(gpslocation,TimeZone.getDefault());
+    String sunrise = calc.getOfficialSunriseForDate(Calendar.getInstance());
+    String sunset = calc.getOfficialSunsetForDate(Calendar.getInstance());
+    Log.d(Settings.LOG_ID, "sunrise="+sunrise+", sunset="+sunset);
+    // сохраним время рассвета и заката
+    saveSunriseSunset(settings, sunrise, sunset);
+    // изменим текущую яркость
+    context.sendBroadcast(new Intent(context,ReceiverBrightness.class));
+    // установим таймеры восхода и захода
     Date sunriseDate = settings.getEventDate("sunrise");
-    // !!!
-    // GregorianCalendar gc = new GregorianCalendar(2015,1,19,17,30); 
-    // sunriseDate = gc.getTime();
-    // !!!
     if (sunriseDate != null)
     {
       taskSunrise.setParams("sunrise",settings);

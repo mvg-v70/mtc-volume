@@ -354,6 +354,9 @@ public class Settings {
     if (value <= 0) value = 10;
     if (value > 100) value = 100;
     // рассылаем сообщение серверу microntek
+    // !!!
+    int i = (int)(value*255/100);
+    Log.d(LOG_ID,"setBrightness("+i+")");
     Intent intent = new Intent("com.microntek.light");
     intent.putExtra("keyCode", (int)(value*255/100));
     ctx.sendBroadcast(intent);
@@ -361,6 +364,9 @@ public class Settings {
     
   public int getBrightness()
   {
+    // !!!
+    int i = android.provider.Settings.System.getInt(ctx.getContentResolver(), "screen_brightness", -1);
+    Log.d(LOG_ID,"getBrightness()="+i);
     return (int)100*android.provider.Settings.System.getInt(ctx.getContentResolver(), "screen_brightness", 255)/255;
   }
     
@@ -374,7 +380,7 @@ public class Settings {
   }
     
   // устанавливает яркость в соответствии с текущим временем
-  public void setTimeBrightness()
+  public boolean setTimeBrightness()
   {
     int sunriseHour = getInteger("sunrise.hour",-1);
     int sunriseMin = getInteger("sunrise.min",-1);
@@ -403,10 +409,16 @@ public class Settings {
         // вечернее
         brightness = getBrightnessNightLevel();
       // установим яркость
-      Log.d(LOG_ID,"set brightness: current="+getBrightness()+", brightness="+brightness);
+      Log.d(LOG_ID,"set brightness="+brightness+", current="+getBrightness());
       if (getBrightness() != brightness)
+      {
         setBrightness(brightness);
+        return true;
+      }
+      else
+        return false;
     }
+    return false;
   }
 
 }

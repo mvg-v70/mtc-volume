@@ -12,7 +12,9 @@ import android.support.v4.app.NotificationCompat;
 
 public class ServiceMain extends Service
 {
-  public static boolean isRunning = false; 
+	
+  public static boolean isRunning = false;
+  private String mcuVersion = "";
   // дл€ определени€ скорости
   private static Intent si;
   private static PendingIntent spi;
@@ -44,6 +46,11 @@ public class ServiceMain extends Service
     Context context = this;
     Settings settings = Settings.get(context);
     Log.d(Settings.LOG_ID, "ServiceMain: start service");
+    // mcu version
+    mcuVersion = Settings.get(this).getMcuVersion();
+    Log.d(Settings.LOG_ID,mcuVersion);
+    if (!mcuVersion.startsWith("MTCB-"))
+      Log.e(Settings.LOG_ID,"incorrect MCU version '"+mcuVersion+"'");
     // notification
     Intent ni = new Intent(this, ActivityMain.class);
     PendingIntent ci = PendingIntent.getActivity(this, 0, ni, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -68,6 +75,8 @@ public class ServiceMain extends Service
     }
     else
       Log.e(Settings.LOG_ID,"locationManager not found!");
+    // изменим текущую €ркость
+    context.sendBroadcast(new Intent(context,ReceiverBrightness.class));
     // service OK
     isRunning = true;
     return START_STICKY;
