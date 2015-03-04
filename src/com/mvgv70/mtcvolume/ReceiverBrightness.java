@@ -18,7 +18,7 @@ public class ReceiverBrightness extends BroadcastReceiver {
     {
       // установим €ркость по таймеру
       int brightness = intent.getIntExtra("brightness",0);
-      Log.d(Settings.LOG_ID,"brightness="+brightness);
+      Log.d(Settings.LOG_ID,"ReceiverBrightness "+brightness);
       if (brightness > 0)
       {
         // установим €ркость

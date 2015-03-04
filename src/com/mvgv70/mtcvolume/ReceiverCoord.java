@@ -19,21 +19,41 @@ import android.util.Log;
 
 public class ReceiverCoord extends BroadcastReceiver {
 	
-  private static Timer timerSunrise = new Timer();
-  private static Timer timerSunset = new Timer();
-  private static TimerBrightness taskSunrise = new TimerBrightness();
-  private static TimerBrightness taskSunset = new TimerBrightness();
+  private static Timer timerSunrise = null;
+  private static Timer timerSunset = null;
+  private static TimerBrightness taskSunrise = null;
+  private static TimerBrightness taskSunset = null;
+  
+  // создание таймеров
+  public static void createTimers()
+  {
+    Log.d(Settings.LOG_ID,"createTimers()");
+    timerSunrise = new Timer();
+    timerSunset = new Timer();
+    taskSunrise = new TimerBrightness();
+    taskSunset = new TimerBrightness();
+  }
   
   // остановка таймеров
   public static void cancelTimers()
   {
+    Log.d(Settings.LOG_ID,"cancelTimers()");
+    // sunrise
+    taskSunrise.cancel();
+    taskSunrise = null;
     timerSunrise.cancel();
+    timerSunrise = null;
+    // sunset
+    taskSunset.cancel();
+    taskSunset = null;
     timerSunset.cancel();
+    timerSunset = null;
   }
 	
   @Override
   public void onReceive(Context context, Intent intent)
   {
+	Log.d(Settings.LOG_ID,"ReceiverCoord.onReceive");
     Settings settings = Settings.get(context);
     if (!intent.hasExtra(LocationManager.KEY_LOCATION_CHANGED)) return;
     Location location = (Location)intent.getExtras().get(LocationManager.KEY_LOCATION_CHANGED);
@@ -73,6 +93,34 @@ public class ReceiverCoord extends BroadcastReceiver {
     int sunriseMin = settings.parseString(sunrise.substring(3,5),-1);
     int sunsetHour = settings.parseString(sunset.substring(0,2),-1);
     int sunsetMin = settings.parseString(sunset.substring(3,5),-1);
+    // учет коррекции €ркости
+    int correction = settings.getBrightnessCorrection();
+    // + увеличивает светлое врем€ суток
+	// - увеличивает темное врем€ суток
+    if (correction != 0)
+    {
+      Log.d(Settings.LOG_ID,"brightness correction time "+correction+" min");
+      Calendar calendar = Calendar.getInstance();
+      // восход
+      calendar.setTimeInMillis(java.lang.System.currentTimeMillis());
+      calendar.set(Calendar.HOUR_OF_DAY, sunriseHour);
+      calendar.set(Calendar.MINUTE, sunriseMin);
+      // коррекци€ восхода  	    
+      calendar.add(Calendar.MINUTE, -correction);
+      // скорректированное врем€ восхода
+      sunriseHour = calendar.get(Calendar.HOUR_OF_DAY);
+      sunriseMin = calendar.get(Calendar.MINUTE);
+      // закат
+      calendar.setTimeInMillis(java.lang.System.currentTimeMillis());
+      calendar.set(Calendar.HOUR_OF_DAY, sunsetHour);
+      calendar.set(Calendar.MINUTE, sunsetMin);
+      // коррекци€ заката  	    
+      calendar.add(Calendar.MINUTE, correction);
+      // скорректированное врем€ заката
+      sunsetHour = calendar.get(Calendar.HOUR_OF_DAY);
+      sunsetMin = calendar.get(Calendar.MINUTE);
+    }
+    
     // сохраним
     settings.setSunsetSunrise(sunriseHour,sunriseMin,sunsetHour,sunsetMin);
   }

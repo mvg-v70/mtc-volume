@@ -7,6 +7,7 @@ import android.widget.Toast;
 import android.preference.Preference;
 import android.preference.EditTextPreference;
 import android.content.Context;
+import android.content.Intent;
 
 public class ActivitySettings extends PreferenceActivity {
 	
@@ -22,7 +23,8 @@ public class ActivitySettings extends PreferenceActivity {
   {
     // массив со скорост€ми необходимо пересобрать из настроек
     Settings.get(this).clearSpeedValues();
-    // TODO: изменить текущую €ркость
+    // изменить текущую €ркость
+    sendBroadcast(new Intent(this,ReceiverBrightness.class));
     super.onDestroy();
   }
   

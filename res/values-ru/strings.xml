@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MTC-Volume</string>
     <string name="app_descr">Microntek сервис звука магнитолы</string>
     <string name="app_service_title">MTC-Volume сервис</string>
     <string name="app_service_on">Сервис работает</string>
@@ -55,8 +54,10 @@
     <string name="ui_adv_settings_apps_music_title">Коррекция громкости для Музыка</string>
     <string name="ui_adv_settings_apps_dvd_text">DVD</string>
     <string name="ui_adv_settings_apps_dvd_title">Коррекция громкости для DVD</string>
+    <string name="ui_adv_settings_apps_movie_text">Видео</string>
+    <string name="ui_adv_settings_apps_movie_title">Коррекция громкости для Видео</string>
     <string name="ui_adv_settings_apps_avin_text">AV Вход</string>
-    <string name="ui_adv_settings_apps_avin_title">Коррекция громкости для AV Вход</string>
+    <string name="ui_adv_settings_apps_avin_title">Коррекция громкости для Видео</string>
     <string name="ui_adv_settings_apps_ipod_text">IPod</string>
     <string name="ui_adv_settings_apps_ipod_title">Коррекция громкости для IPod</string>
     
@@ -73,6 +74,8 @@
     <string name="ui_adv_settings_bright_night_level_title">Ночной уровень от 1 до 100</string>
     <string name="ui_adv_settings_bright_day_level_text">Дневной уровень</string>
     <string name="ui_adv_settings_bright_day_level_title">Дневной уровень от 1 до 100</string>
+    <string name="ui_adv_settings_bright_correction_text">Коррекция, мин</string>
+    <string name="ui_adv_settings_bright_correction_title">Коррекция времени установки яркости, мин. + увеличение светлого времени, - темного</string>
     <string name="ui_adv_settings_bright_toast_text">Показывать уведомления</string>
     <string name="ui_adv_settings_bright_toast_title">Показывать короткие пояснения при коррекции яркости</string>
 </resources>

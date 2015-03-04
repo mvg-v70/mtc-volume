@@ -29,7 +29,7 @@ public class ReceiverBluetooth extends BroadcastReceiver
     // перехват звонков выключен в настройках
     if (!Settings.get(context).getCallsEnable()) return;
     String action = intent.getAction();
-    if (action.equals(BLUETOOTH_ACTION) & ServiceMain.isRunning) {
+    if (action.equals(BLUETOOTH_ACTION)) {
       int state = intent.getIntExtra(BLUETOOTH_STATE,-1);
       if ((state == BLUETOOTH_CALL_IN) | (state == BLUETOOTH_CALL_OUT)) {
         // входящий или исходящий звонок

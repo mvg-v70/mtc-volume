@@ -7,9 +7,6 @@ import android.util.Log;
 
 public class ReceiverBoot extends BroadcastReceiver {
 
-  // TODO: нужно ли это ?
-  // public ReceiverBoot() {}
-	
   @Override
   public void onReceive(Context context, Intent intent) 
   {

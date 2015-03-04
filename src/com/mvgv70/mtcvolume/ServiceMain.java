@@ -75,6 +75,8 @@ public class ServiceMain extends Service
     }
     else
       Log.e(Settings.LOG_ID,"locationManager not found!");
+    // создадим таймеры €ркости 
+    ReceiverCoord.createTimers();
     // изменим текущую €ркость
     context.sendBroadcast(new Intent(context,ReceiverBrightness.class));
     // service OK
@@ -93,7 +95,7 @@ public class ServiceMain extends Service
       locationManager.removeUpdates(spi);
       locationManager.removeUpdates(lpi);
     }
-    // удалим таймеры €ркости
+    // удалим таймеры €ркости 
     ReceiverCoord.cancelTimers();
     super.onDestroy();
   }

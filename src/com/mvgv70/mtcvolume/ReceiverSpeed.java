@@ -59,7 +59,6 @@ public class ReceiverSpeed extends BroadcastReceiver {
     volumeNew = volume + changeIncr*volChange;
     if (volumeNew <= 0) volumeNew = 1;
     // коррекция громкости от скорости
-    last_speed = speed;
     if (volumeNew != volume)
     {
       Log.d(Settings.LOG_ID,"speed="+(int)speed+", last_speed="+(int)last_speed+", changeIncr="+changeIncr+", volChange="+volChange+", volume="+volume+", volumeNew="+volumeNew);
@@ -67,6 +66,7 @@ public class ReceiverSpeed extends BroadcastReceiver {
       settings.setVolume(volumeNew);
       settings.showSpeedToast(context.getString(R.string.toast_volume_speed_set)+" "+volumeDir+" ("+volumeNew+")");
     }
+    last_speed = speed;
   }
 
 }

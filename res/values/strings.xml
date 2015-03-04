@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">MTC-Volume</string>
+    <string name="app_name" translatable="false">MTC-Volume</string>
     <string name="app_descr">Microntek device volume service</string>
     <string name="app_service_title">MTC-Volume service</string>
     <string name="app_service_on">Service is on</string>
@@ -56,6 +56,8 @@
     <string name="ui_adv_settings_apps_music_title">Correction for Music app</string>
     <string name="ui_adv_settings_apps_dvd_text">DVD</string>
     <string name="ui_adv_settings_apps_dvd_title">Correction for DVD app</string>
+    <string name="ui_adv_settings_apps_movie_text">Movie</string>
+    <string name="ui_adv_settings_apps_movie_title">Correction for Movie app</string>
     <string name="ui_adv_settings_apps_avin_text">AV In</string>
     <string name="ui_adv_settings_apps_avin_title">Correction for AV In app</string>
     <string name="ui_adv_settings_apps_ipod_text">IPod</string>
@@ -74,6 +76,8 @@
     <string name="ui_adv_settings_bright_night_level_title">Night level from 1 to 100</string>
     <string name="ui_adv_settings_bright_day_level_text">Day level</string>
     <string name="ui_adv_settings_bright_day_level_title">Day level from 1 to 100</string>
+    <string name="ui_adv_settings_bright_correction_text">Correction, min</string>
+    <string name="ui_adv_settings_bright_correction_title">Brightness time correction, min</string>
     <string name="ui_adv_settings_bright_toast_text">Show notifications</string>
     <string name="ui_adv_settings_bright_toast_title">Show toast notifications</string>
         

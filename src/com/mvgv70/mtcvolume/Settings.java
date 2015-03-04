@@ -8,9 +8,11 @@ import android.preference.PreferenceManager;
 import android.widget.Toast;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
 import android.util.Log;
 import android.view.Gravity;
 import android.media.AudioManager;
+import android.provider.Settings.System;
 
 import java.util.Calendar;
 import java.util.Arrays;
@@ -29,6 +31,7 @@ public class Settings {
   private static Settings instance = null;
   private SharedPreferences prefs;
   private AudioManager am;
+  private Resources res;
 
   private static Context ctx;
 
@@ -37,6 +40,7 @@ public class Settings {
     ctx = context;
     prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
     am = ((AudioManager)context.getSystemService(Context.AUDIO_SERVICE));
+    res = context.getResources();
   }
 
   public static Settings get(Context ctx) 
@@ -73,7 +77,7 @@ public class Settings {
   public void showSafeVolumeToast(String text)
   {
     if (getBoolean("safevolume.toast",true))
-    Toast.makeText(ctx, text, Toast.LENGTH_SHORT).show();
+      Toast.makeText(ctx, text, Toast.LENGTH_SHORT).show();
   }
 	
   public void showSpeedToast(String text)
@@ -188,7 +192,7 @@ public class Settings {
 	
   public int getSafeVolume()
   {
-    return getPrefInteger("safevolume.level",R.integer.cfg_def_safevolume_level);
+    return getPrefInteger("safevolume.level",res.getInteger(R.integer.cfg_def_safevolume_level));
   }
 	
   public boolean getSpeedEnable()
@@ -228,12 +232,17 @@ public class Settings {
 	
   public int getBrightnessNightLevel()
   {
-    return getPrefInteger("brightness.night",R.integer.cfg_def_brightness_night_level);
+    return getPrefInteger("brightness.night",res.getInteger(R.integer.cfg_def_brightness_night_level));
   }
 	
   public int getBrightnessDayLevel()
   {
-    return getPrefInteger("brightness.day",R.integer.cfg_def_brightness_day_level);
+    return getPrefInteger("brightness.day",res.getInteger(R.integer.cfg_def_brightness_day_level));
+  }
+  
+  public int getBrightnessCorrection()
+  {
+    return getPrefInteger("brightness.correction",res.getInteger(R.integer.cfg_def_brightness_correction));
   }
 	
   public Date getEventDate(String name)
@@ -246,11 +255,11 @@ public class Settings {
     {
       // текущее время
       Calendar calendar = Calendar.getInstance();
-      calendar.setTimeInMillis(System.currentTimeMillis());
+      calendar.setTimeInMillis(java.lang.System.currentTimeMillis());
       // время события в текущем дне 
       calendar.set(Calendar.HOUR_OF_DAY, eventHour);
       calendar.set(Calendar.MINUTE, eventMin);
-      if (calendar.getTimeInMillis() < System.currentTimeMillis())
+      if (calendar.getTimeInMillis() < java.lang.System.currentTimeMillis())
         // если время события уже прошло добавим день
         calendar.add(Calendar.DAY_OF_YEAR, 1);
       // возвращем дату
@@ -353,21 +362,22 @@ public class Settings {
     // проверим граничные значения
     if (value <= 0) value = 10;
     if (value > 100) value = 100;
-    // рассылаем сообщение серверу microntek
-    // !!!
-    int i = (int)(value*255/100);
-    Log.d(LOG_ID,"setBrightness("+i+")");
+    //
+    Log.d(LOG_ID,"setBrightness("+value+")");
+    // рассылаем сообщение
     Intent intent = new Intent("com.microntek.light");
     intent.putExtra("keyCode", (int)(value*255/100));
-    ctx.sendBroadcast(intent);
+    ctx.sendBroadcast(intent); 
+    /*
+    ContentResolver cResolver = ctx.getContentResolver();
+    android.provider.Settings.System.putInt(cResolver, System.SCREEN_BRIGHTNESS_MODE, System.SCREEN_BRIGHTNESS_MODE_MANUAL);    
+    android.provider.Settings.System.putInt(cResolver, System.SCREEN_BRIGHTNESS, Math.round(value*255/100));
+    */
   }
     
   public int getBrightness()
   {
-    // !!!
-    int i = android.provider.Settings.System.getInt(ctx.getContentResolver(), "screen_brightness", -1);
-    Log.d(LOG_ID,"getBrightness()="+i);
-    return (int)100*android.provider.Settings.System.getInt(ctx.getContentResolver(), "screen_brightness", 255)/255;
+    return Math.round(100*android.provider.Settings.System.getInt(ctx.getContentResolver(), System.SCREEN_BRIGHTNESS, 255)/255);
   }
     
   public void setSunsetSunrise(int sunriseHour, int sunriseMin, int sunsetHour, int sunsetMin)
@@ -377,6 +387,11 @@ public class Settings {
     setInteger("sunrise.min",sunriseMin);
     setInteger("sunset.hour",sunsetHour);
     setInteger("sunset.min",sunsetMin);
+  }
+  
+  private boolean equalBrightness(int value)
+  {
+    return (Math.abs(value-getBrightness()) <= 1);
   }
     
   // устанавливает яркость в соответствии с текущим временем
@@ -394,7 +409,7 @@ public class Settings {
       long sunset = sunsetHour*60 + sunsetMin;
       // текущее время
       Calendar calendar = Calendar.getInstance();
-      calendar.setTimeInMillis(System.currentTimeMillis());
+      calendar.setTimeInMillis(java.lang.System.currentTimeMillis());
       // дневное или вечернее время
       int curHour = calendar.get(Calendar.HOUR_OF_DAY);
       int curMin = calendar.get(Calendar.MINUTE);
@@ -410,7 +425,7 @@ public class Settings {
         brightness = getBrightnessNightLevel();
       // установим яркость
       Log.d(LOG_ID,"set brightness="+brightness+", current="+getBrightness());
-      if (getBrightness() != brightness)
+      if (!equalBrightness(brightness))
       {
         setBrightness(brightness);
         return true;

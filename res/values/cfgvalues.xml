@@ -4,4 +4,5 @@
 	<integer name="cfg_def_safevolume_level" translatable="false">15</integer>
 	<integer name="cfg_def_brightness_night_level" translatable="false">10</integer>
 	<integer name="cfg_def_brightness_day_level" translatable="false">100</integer>
+	<integer name="cfg_def_brightness_correction" translatable="false">0</integer>
 </resources>
