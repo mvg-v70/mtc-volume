@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mvgv70.mtcvolume"
-    android:versionCode="2006"
+    android:versionCode="2012"
     android:versionName="2.00" >
 
     <uses-sdk
@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     
     <application
         android:allowBackup="true"
@@ -85,6 +86,14 @@
         <receiver
             android:name="ReceiverCoord"
             android:enabled="true" >
+        </receiver>
+        
+        <receiver
+            android:name="ReceiverBackView"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.microntek.backviewend" />
+            </intent-filter>
         </receiver>
 
         <activity
