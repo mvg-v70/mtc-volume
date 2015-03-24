@@ -367,7 +367,7 @@ public class Settings {
     // рассылаем сообщение
     Intent intent = new Intent("com.microntek.light");
     intent.putExtra("keyCode", (int)(value*255/100));
-    ctx.sendBroadcast(intent); 
+    ctx.sendBroadcast(intent);
     /*
     ContentResolver cResolver = ctx.getContentResolver();
     android.provider.Settings.System.putInt(cResolver, System.SCREEN_BRIGHTNESS_MODE, System.SCREEN_BRIGHTNESS_MODE_MANUAL);    
@@ -401,6 +401,7 @@ public class Settings {
     int sunriseMin = getInteger("sunrise.min",-1);
     int sunsetHour = getInteger("sunset.hour",-1);
     int sunsetMin = getInteger("sunset.min",-1);
+    boolean result = false;
     // если задано время восхода и захода
     if ((sunriseHour > 0) & (sunriseMin > 0) & (sunsetHour > 0) & (sunsetMin > 0))
     {
@@ -426,14 +427,10 @@ public class Settings {
       // установим яркость
       Log.d(LOG_ID,"set brightness="+brightness+", current="+getBrightness());
       if (!equalBrightness(brightness))
-      {
-        setBrightness(brightness);
-        return true;
-      }
-      else
-        return false;
+        result = true;
+      setBrightness(brightness);
     }
-    return false;
+    return result;
   }
 
 }

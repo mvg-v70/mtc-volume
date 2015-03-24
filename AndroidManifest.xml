@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mvgv70.mtcvolume"
-    android:versionCode="2012"
+    android:versionCode="2015"
     android:versionName="2.00" >
 
     <uses-sdk
