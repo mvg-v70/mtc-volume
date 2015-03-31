@@ -1,13 +1,13 @@
 package com.mvgv70.mtcvolume;
 
+import android.content.ContentResolver;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager.NameNotFoundException;
+// import android.content.pm.PackageInfo;
+// import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.util.Log;
 import android.view.Gravity;
@@ -100,6 +100,7 @@ public class Settings {
 	
   public String getVersion() 
   {
+	/*
     String version = "?";
     try {
       PackageInfo pInfo = ctx.getPackageManager().getPackageInfo(ctx.getPackageName(), 0);
@@ -108,6 +109,8 @@ public class Settings {
       e.printStackTrace();
     }
     return version;
+    */
+	return ctx.getString(R.string.app_version);
   } 
 
   public static void destroy() 
@@ -365,14 +368,12 @@ public class Settings {
     //
     Log.d(LOG_ID,"setBrightness("+value+")");
     // рассылаем сообщение
-    Intent intent = new Intent("com.microntek.light");
-    intent.putExtra("keyCode", (int)(value*255/100));
-    ctx.sendBroadcast(intent);
-    /*
+    // Intent intent = new Intent("com.microntek.light");
+    // intent.putExtra("keyCode", (int)(value*255/100));
+    // ctx.sendBroadcast(intent);
     ContentResolver cResolver = ctx.getContentResolver();
     android.provider.Settings.System.putInt(cResolver, System.SCREEN_BRIGHTNESS_MODE, System.SCREEN_BRIGHTNESS_MODE_MANUAL);    
     android.provider.Settings.System.putInt(cResolver, System.SCREEN_BRIGHTNESS, Math.round(value*255/100));
-    */
   }
     
   public int getBrightness()

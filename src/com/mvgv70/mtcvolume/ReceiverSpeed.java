@@ -47,7 +47,7 @@ public class ReceiverSpeed extends BroadcastReceiver {
       volumeDir = "+";
     else
       volumeDir = "-";
-    // на сколько единиц нужно увеличить громкость по сравнению с current_app_volume
+    // на сколько единиц нужно увеличить громкость
     for (Integer spd_step : speed_steps)
     {
       if (last_speed >= spd_step) 
@@ -56,7 +56,7 @@ public class ReceiverSpeed extends BroadcastReceiver {
         changeIncr += volChange;
     }
     // новый уровень громкости
-    volumeNew = volume + changeIncr*volChange;
+    volumeNew = volume + changeIncr;
     if (volumeNew <= 0) volumeNew = 1;
     // коррекция громкости от скорости
     if (volumeNew != volume)

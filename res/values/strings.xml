@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name" translatable="false">MTC-Volume</string>
+    <string name="app_version" translatable="false">2.01</string>
     <string name="app_descr">Microntek device volume service</string>
     <string name="app_service_title">MTC-Volume service</string>
     <string name="app_service_on">Service is on</string>

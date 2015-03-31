@@ -6,6 +6,12 @@ import android.content.Intent;
 import android.util.Log;
 
 public class ReceiverBrightness extends BroadcastReceiver {
+	
+  // установить текущую €ркость по настройкам
+  public static void setTimeBrighness(Context context)
+  {
+    context.sendBroadcast(new Intent(context,ReceiverBrightness.class));
+  }
 
   @Override
   public void onReceive(Context context, Intent intent)
