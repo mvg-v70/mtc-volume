@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mvgv70.mtcvolume"
-    android:versionCode="2016"
+    android:versionCode="2022"
     android:versionName="@string/app_version" >
 
     <uses-sdk
@@ -93,6 +93,14 @@
             android:enabled="true" >
             <intent-filter>
                 <action android:name="com.microntek.backviewend" />
+            </intent-filter>
+        </receiver>
+        
+        <receiver
+            android:name="ReceiverKeys"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.microntek.irkeyDown" />
             </intent-filter>
         </receiver>
 

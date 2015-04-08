@@ -29,7 +29,7 @@ public class ReceiverAppVolume extends BroadcastReceiver {
         if (!current_appname.isEmpty())
         {
           // громкость
-          int volume = settings.getVolume(context);
+          int volume = settings.getVolume();
           // коррекция громкости для текущего приложения
           int currentAdj = settings.getAppVolumeAdj(current_appname);
           // коррекция громкости для запускаемого приложения

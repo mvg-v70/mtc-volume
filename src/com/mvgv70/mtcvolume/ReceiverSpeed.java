@@ -25,7 +25,7 @@ public class ReceiverSpeed extends BroadcastReceiver {
     // включен режим mute
     if (settings.getMute()) return;
     // текущая громкость
-    int volume = settings.getVolume(context);
+    int volume = settings.getVolume();
     // нулевая громкость
     if (volume == 0) return;
     // текущая скорость
@@ -47,7 +47,7 @@ public class ReceiverSpeed extends BroadcastReceiver {
       volumeDir = "+";
     else
       volumeDir = "-";
-    // на сколько единиц нужно увеличить громкость
+    // на сколько единиц нужно увеличить громкость по сравнению с current_app_volume
     for (Integer spd_step : speed_steps)
     {
       if (last_speed >= spd_step) 

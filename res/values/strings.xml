@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name" translatable="false">MTC-Volume</string>
-    <string name="app_version" translatable="false">2.01</string>
+    <string name="app_version" translatable="false">2.02</string>
     <string name="app_descr">Microntek device volume service</string>
     <string name="app_service_title">MTC-Volume service</string>
     <string name="app_service_on">Service is on</string>
@@ -18,6 +18,8 @@
     <string name="toast_volume_speed_set">Volume</string>
     <string name="toast_volume_app_corr">Volume correction</string>
     <string name="toast_brightness_change">Brightness adjusted</string>
+    <string name="toast_mute_on">Mute On</string>
+    <string name="toast_mute_off">Mute Off</string>
     
     <string name="ui_adv_settings_calls">Bluetooth Calls</string>
     <string name="ui_adv_settings_calls_enable_text">Pause at incoming/outgoing calls</string>
@@ -42,6 +44,12 @@
     <string name="ui_adv_settings_speedvol_level_text">Volume level value to change on every step</string>
     <string name="ui_adv_settings_speedvol_toast_text">Show notifications</string>
     <string name="ui_adv_settings_speedvol_toast_title">Show toast notifications</string>
+    
+    <string name="ui_adv_settings_pausemute">Pause as Mute</string>
+    <string name="ui_adv_settings_pausemute_enable_text">Enable switch mute with pause press</string>
+    <string name="ui_adv_settings_pausemute_enable_title">Switch mute state when pause/stop key pressed</string>
+    <string name="ui_adv_settings_pausemute_toast_text">Show notifications</string>
+    <string name="ui_adv_settings_pausemute_toast_title">Show toast notifications</string>
     
     <string name="ui_adv_settings_appvol">Separate apps volume</string>
     <string name="ui_adv_settings_appvol_enable_text">Enable separate apps volume</string>

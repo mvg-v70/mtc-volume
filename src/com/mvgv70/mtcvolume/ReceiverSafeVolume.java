@@ -37,7 +37,7 @@ public class ReceiverSafeVolume extends BroadcastReceiver
   {
     Settings settings = Settings.get(context);
     //
-    int volume = settings.getVolume(context);
+    int volume = settings.getVolume();
     int safeVolume = settings.getSafeVolume();
     if (volume > safeVolume)
     {

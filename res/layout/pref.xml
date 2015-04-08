@@ -82,6 +82,25 @@
     </PreferenceCategory>
     
     <PreferenceCategory
+        android:key="cat_pausemute"
+        android:summary=""
+        android:title="@string/ui_adv_settings_pausemute" >
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="pausemute.enable"
+            android:title="@string/ui_adv_settings_pausemute_enable_text" 
+            android:summary="@string/ui_adv_settings_pausemute_enable_title" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:dependency="pausemute.enable"
+            android:key="pausemute.toast"
+            android:title="@string/ui_adv_settings_pausemute_toast_text" 
+            android:summary="@string/ui_adv_settings_pausemute_toast_title" >
+        </CheckBoxPreference>
+    </PreferenceCategory>
+    
+    <PreferenceCategory
         android:key="cat_apps"
         android:summary=""
         android:title="@string/ui_adv_settings_appvol" >

@@ -56,7 +56,12 @@ public class ReceiverBluetooth extends BroadcastReceiver
   public boolean isPlaying()
   {
     return (MusicPlayState == MUSIC_PLAY);
-  }  
+  }
+  
+  public static boolean isPlayerRun()
+  {
+    return (MusicPlayState != MUSIC_NONE);
+  }
   
   public void switchPlayPause(Context cntx)
   {

@@ -2,12 +2,11 @@ package com.mvgv70.mtcvolume;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
-// import android.content.pm.PackageInfo;
-// import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.util.Log;
 import android.view.Gravity;
@@ -97,20 +96,16 @@ public class Settings {
     if (getBoolean("brightness.toast",true))
       Toast.makeText(ctx, text, Toast.LENGTH_SHORT).show();
   }
+  
+  public void showPauseMuteToast(String text)
+  {
+    if (getBoolean("pausemute.toast",true))
+      Toast.makeText(ctx, text, Toast.LENGTH_SHORT).show();
+  }
 	
   public String getVersion() 
   {
-	/*
-    String version = "?";
-    try {
-      PackageInfo pInfo = ctx.getPackageManager().getPackageInfo(ctx.getPackageName(), 0);
-      version = pInfo.versionName;
-    } catch (NameNotFoundException e) {
-      e.printStackTrace();
-    }
-    return version;
-    */
-	return ctx.getString(R.string.app_version);
+    return ctx.getString(R.string.app_version);
   } 
 
   public static void destroy() 
@@ -185,12 +180,12 @@ public class Settings {
 	
   public boolean getCallsEnable()
   {
-    return (getServiceEnable() & getBoolean("calls.enable",true)); 
+    return (getServiceEnable() && getBoolean("calls.enable",true)); 
   }
 	
   public boolean getSafeVolumeEnable()
   {
-    return (getServiceEnable() & getBoolean("safevolume.enable",true)); 
+    return (getServiceEnable() && getBoolean("safevolume.enable",true)); 
   }
 	
   public int getSafeVolume()
@@ -198,9 +193,14 @@ public class Settings {
     return getPrefInteger("safevolume.level",res.getInteger(R.integer.cfg_def_safevolume_level));
   }
 	
+  public boolean getPauseMuteEnable()
+  {
+    return (getServiceEnable() && getBoolean("pausemute.enable", true));
+  }
+  
   public boolean getSpeedEnable()
   {
-    return (getServiceEnable() & getBoolean("speed.enable", true));
+    return (getServiceEnable() && getBoolean("speed.enable", true));
   }
 	
   public int getSpeedChangeValue()
@@ -210,7 +210,7 @@ public class Settings {
 	
   public boolean getAppsEnable()
   {
-    return (getServiceEnable() & getBoolean("apps.enable",true)); 
+    return (getServiceEnable() && getBoolean("apps.enable",true)); 
   }
 	
   public int getAppVolumeAdj(String appName)
@@ -220,17 +220,17 @@ public class Settings {
 	
   public boolean getNavitelEnable()
   {
-    return (getServiceEnable() & getBoolean("navitel.enable",true));
+    return (getServiceEnable() && getBoolean("navitel.enable",true));
   }
 	
   public boolean getBrightnessEnable()
   {
-    return (getServiceEnable() & getBoolean("brightness.enable",true));
+    return (getServiceEnable() && getBoolean("brightness.enable",true));
   }
 	
   public boolean getBrightnessToastEnable()
   {
-    return (getServiceEnable() & getBoolean("brightness.toast",true));
+    return (getServiceEnable() && getBoolean("brightness.toast",true));
   }
 	
   public int getBrightnessNightLevel()
@@ -254,7 +254,7 @@ public class Settings {
     int eventHour = getInteger(name+".hour",-1);
     int eventMin = getInteger(name+".min",-1);
     // если задано время события
-    if ((eventHour > 0) & (eventMin > 0))
+    if ((eventHour > 0) && (eventMin > 0))
     {
       // текущее время
       Calendar calendar = Calendar.getInstance();
@@ -307,7 +307,7 @@ public class Settings {
       {
         Integer s = parseString(spd_step,-1);
         // отбрасываем некорректные значения
-        if ((s > 0) & (s < 500)) 
+        if ((s > 0) && (s < 500)) 
         {
           if (speedValues.size() > 0)
             speed_vals_clr.append(", ");
@@ -339,21 +339,41 @@ public class Settings {
     }
     return (int) f2;
   }
-	
-  public int getVolume(Context context) 
+  
+  //уведомление об изменении громкости
+  @SuppressWarnings("unused")
+  private void changeVolumeNotify(int level)
   {
-    return android.provider.Settings.System.getInt(context.getContentResolver(), "av_volume=", 10);
+    Intent intent = new Intent("com.microntek.VOLUME_CHANGED");
+    intent.putExtra("volume",level);
+    ctx.sendBroadcast(intent);
+  }
+	
+  public int getVolume() 
+  {
+    return android.provider.Settings.System.getInt(ctx.getContentResolver(),"av_volume=",10);
   }
 	  
   public void setVolume(int level) 
   {
-    android.provider.Settings.System.putInt(ctx.getContentResolver(), "av_volume=", level);
-    am.setParameters("av_volume=" + mtcGetRealVolume(level));
+    if ((level <= VOLUME_MAX) && (level >= 0))
+    {
+      android.provider.Settings.System.putInt(ctx.getContentResolver(),"av_volume=",level);
+      am.setParameters("av_volume="+mtcGetRealVolume(level));
+    }
+    else
+      Log.w(LOG_ID,"invalid volume level "+level);
   }
 	
   public boolean getMute() 
   {
     return am.getParameters("av_mute=").equals("true");
+  }
+  
+  public void setMute(boolean value)
+  {
+    // am.setParameters("av_mute="+value);
+	am.setStreamMute(am.getMode(), value);
   }
     
   /*
@@ -404,7 +424,7 @@ public class Settings {
     int sunsetMin = getInteger("sunset.min",-1);
     boolean result = false;
     // если задано время восхода и захода
-    if ((sunriseHour > 0) & (sunriseMin > 0) & (sunsetHour > 0) & (sunsetMin > 0))
+    if ((sunriseHour > 0) && (sunriseMin > 0) && (sunsetHour > 0) && (sunsetMin > 0))
     {
       // пересчитаем в минуты после начала суток
       long sunrise = sunriseHour*60 + sunriseMin;
@@ -419,7 +439,7 @@ public class Settings {
       long curTime = curHour*60 + curMin;
       // день или ночь
       int brightness;
-      if ((curTime > sunrise) & (curTime <= sunset))
+      if ((curTime > sunrise) && (curTime <= sunset))
         // дневное время
         brightness = getBrightnessDayLevel();
       else

@@ -15,6 +15,8 @@
     <string name="toast_volume_speed_set">Громкость</string>
     <string name="toast_volume_app_corr">Коррекция громкости</string>
     <string name="toast_brightness_change">Коррекция яркости экрана</string>
+    <string name="toast_mute_on">Звук Выкл.</string>
+    <string name="toast_mute_off">Звук Вкл.</string>
     
     <string name="ui_adv_settings_calls">Bluetooth звонки</string>
     <string name="ui_adv_settings_calls_enable_text">Пауза при входящем/исходящем звонках</string>
@@ -39,6 +41,12 @@
     <string name="ui_adv_settings_speedvol_level_text">Насколько сильно громкость меняется на каждом шаге</string>
     <string name="ui_adv_settings_speedvol_toast_text">Показывать уведомления</string>
     <string name="ui_adv_settings_speedvol_toast_title">Показывать короткие пояснения при коррекции громкости</string>
+    
+    <string name="ui_adv_settings_pausemute">Mute при нажатии кнопки Пауза</string>
+    <string name="ui_adv_settings_pausemute_enable_text">Выключение звука при нажатии кнопки Пауза</string>
+    <string name="ui_adv_settings_pausemute_enable_title">Включени/выключение звука при нажатии кнопки Пауза/Проигрывание</string>
+    <string name="ui_adv_settings_pausemute_toast_text">Показывать уведомления</string>
+    <string name="ui_adv_settings_pausemute_toast_title">Показывать короткие пояснения изменении режима звука</string>
     
     <string name="ui_adv_settings_appvol">Громкость в приложениях</string>
     <string name="ui_adv_settings_appvol_enable_text">Коррекция громкости приложений</string>
