@@ -48,7 +48,7 @@ public class ServiceMain extends Service
     Log.d(Settings.LOG_ID, "ServiceMain: start service");
     // mcu version
     mcuVersion = Settings.get(this).getMcuVersion();
-    Log.d(Settings.LOG_ID,mcuVersion);
+    Log.i(Settings.LOG_ID,mcuVersion);
     if (!mcuVersion.startsWith("MTCB-"))
       Log.e(Settings.LOG_ID,"incorrect MCU version '"+mcuVersion+"'");
     // notification

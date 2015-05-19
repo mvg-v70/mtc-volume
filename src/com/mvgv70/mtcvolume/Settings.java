@@ -372,7 +372,7 @@ public class Settings {
   
   public void setMute(boolean value)
   {
-    // am.setParameters("av_mute="+value);
+    am.setParameters("av_mute="+value);
 	am.setStreamMute(am.getMode(), value);
   }
     
