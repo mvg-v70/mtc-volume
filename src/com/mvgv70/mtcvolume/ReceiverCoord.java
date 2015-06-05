@@ -53,7 +53,7 @@ public class ReceiverCoord extends BroadcastReceiver {
   @Override
   public void onReceive(Context context, Intent intent)
   {
-	Log.d(Settings.LOG_ID,"ReceiverCoord.onReceive");
+    Log.d(Settings.LOG_ID,"ReceiverCoord.onReceive");
     Settings settings = Settings.get(context);
     if (!intent.hasExtra(LocationManager.KEY_LOCATION_CHANGED)) return;
     Location location = (Location)intent.getExtras().get(LocationManager.KEY_LOCATION_CHANGED);
@@ -96,7 +96,7 @@ public class ReceiverCoord extends BroadcastReceiver {
     // учет коррекции яркости
     int correction = settings.getBrightnessCorrection();
     // + увеличивает светлое время суток
-	// - увеличивает темное время суток
+    // - увеличивает темное время суток
     if (correction != 0)
     {
       Log.d(Settings.LOG_ID,"brightness correction time "+correction+" min");
