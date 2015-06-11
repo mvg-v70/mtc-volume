@@ -8,7 +8,8 @@ import android.util.Log;
 public class ReceiverSafeVolume extends BroadcastReceiver
 {
   // широковещательные события microntek вкл/выкл
-  private static final String STARTUP_ACTION = "com.microntek.startApp";
+  @SuppressWarnings("unused")
+private static final String STARTUP_ACTION = "com.microntek.startApp";
   private static final String ACC_ACTION = "com.microntek.acc";
   private static final String ACC_STATE = "accstate";
   private static final String ACC_OFF = "accoff";
@@ -21,6 +22,7 @@ public class ReceiverSafeVolume extends BroadcastReceiver
     if (!settings.getSafeVolumeEnable()) return;
     //
     String action = intent.getAction();
+    Log.d(Settings.LOG_ID,"ReceiverSafeVolume.onReceive "+action);
     if (action.equals(ACC_ACTION))
     {
       String accState = intent.getStringExtra(ACC_STATE);
@@ -28,7 +30,7 @@ public class ReceiverSafeVolume extends BroadcastReceiver
         // выключение магнитолы
         setSafeVolume(accState, context);
     }
-    else if (action.equals(STARTUP_ACTION))
+    else
       // включение магнитолы
       setSafeVolume("startApp", context);
   }

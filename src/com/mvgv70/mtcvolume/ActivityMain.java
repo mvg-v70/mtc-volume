@@ -10,13 +10,16 @@ import android.widget.TextView;
 
 public class ActivityMain extends Activity implements OnClickListener {
 	
+  private Switch swService;
+	
   @Override
   protected void onCreate(Bundle savedInstanceState) 
   {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    Switch chService = (Switch)findViewById(R.id.swServiceEnable);
-    chService.setChecked(Settings.get(this).getServiceEnable());
+    //
+    swService = (Switch)findViewById(R.id.swServiceEnable);
+    swService.setChecked(Settings.get(this).getServiceEnable());
     // нужно ли запускать сервис
     if (Settings.get(this).getServiceEnable() && !ServiceMain.isRunning)
       startService(new Intent(this, ServiceMain.class));
@@ -30,8 +33,8 @@ public class ActivityMain extends Activity implements OnClickListener {
     switch (v.getId()) {
     case R.id.swServiceEnable:
       // включение/выключение сервиса
-      Settings.get(this).setServiceEnable(((Switch)findViewById(R.id.swServiceEnable)).isChecked());
-      setService(((Switch)findViewById(R.id.swServiceEnable)).isChecked());
+      Settings.get(this).setServiceEnable(swService.isChecked());
+      setService(swService.isChecked());
       break;
     case R.id.btnSettings:
       // вызов настроек

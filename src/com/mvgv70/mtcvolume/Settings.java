@@ -341,7 +341,6 @@ public class Settings {
   }
   
   //уведомление об изменении громкости
-  @SuppressWarnings("unused")
   private void changeVolumeNotify(int level)
   {
     Intent intent = new Intent("com.microntek.VOLUME_CHANGED");
@@ -359,7 +358,10 @@ public class Settings {
     if ((level <= VOLUME_MAX) && (level >= 0))
     {
       android.provider.Settings.System.putInt(ctx.getContentResolver(),"av_volume=",level);
-      am.setParameters("av_volume="+mtcGetRealVolume(level));
+      int mtcLevel = mtcGetRealVolume(level);
+      am.setParameters("av_volume="+mtcLevel);
+      am.setParameters("av_phone_volume="+mtcLevel);
+      changeVolumeNotify(level);
     }
     else
       Log.w(LOG_ID,"invalid volume level "+level);
