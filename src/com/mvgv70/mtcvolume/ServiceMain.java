@@ -42,6 +42,7 @@ public class ServiceMain extends Service
   public int onStartCommand(Intent intent, int flags, int startId) 
   {
     super.onStartCommand(intent, flags, startId);
+    if (isRunning) return START_STICKY;
     // context & settings
     Context context = this;
     Settings settings = Settings.get(context);

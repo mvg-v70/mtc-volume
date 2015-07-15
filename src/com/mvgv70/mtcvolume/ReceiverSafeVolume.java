@@ -30,9 +30,6 @@ private static final String STARTUP_ACTION = "com.microntek.startApp";
         // выключение магнитолы
         setSafeVolume(accState, context);
     }
-    else
-      // включение магнитолы
-      setSafeVolume("startApp", context);
   }
   
   private void setSafeVolume(String accState, Context context)

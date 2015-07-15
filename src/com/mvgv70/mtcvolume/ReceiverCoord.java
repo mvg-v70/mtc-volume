@@ -39,15 +39,27 @@ public class ReceiverCoord extends BroadcastReceiver {
   {
     Log.d(Settings.LOG_ID,"cancelTimers()");
     // sunrise
-    taskSunrise.cancel();
-    taskSunrise = null;
-    timerSunrise.cancel();
-    timerSunrise = null;
+    if (taskSunrise != null)
+    {
+      taskSunrise.cancel();
+      taskSunrise = null;
+    }
+    if (timerSunrise != null)
+    {
+      timerSunrise.cancel();
+      timerSunrise = null;
+    }
     // sunset
-    taskSunset.cancel();
-    taskSunset = null;
-    timerSunset.cancel();
-    timerSunset = null;
+    if (taskSunset != null)
+    {
+      taskSunset.cancel();
+      taskSunset = null;
+    }
+    if (timerSunset != null)
+    {
+      timerSunset.cancel();
+      timerSunset = null;
+    }
   }
 	
   @Override

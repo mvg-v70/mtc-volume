@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class Settings {
 
   // максимальный уровень громкости
-  private static final float VOLUME_MAX = 30f;
+  private static float volumeMax = 30f;
   public static final String LOG_ID = "MTCVOL";
     
   private ArrayList<Integer> speedValues = new ArrayList<Integer>();
@@ -40,6 +40,15 @@ public class Settings {
     prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
     am = ((AudioManager)context.getSystemService(Context.AUDIO_SERVICE));
     res = context.getResources();
+    String vol_max_s = am.getParameters("cfg_maxvolume=");
+    try
+    {
+      volumeMax = Float.parseFloat(vol_max_s);
+    }
+    catch (Exception e)
+    {
+      volumeMax = 30;
+    }
   }
 
   public static Settings get(Context ctx) 
@@ -328,7 +337,7 @@ public class Settings {
   // функция из android.microntek.service.MicrontekServer
   private int mtcGetRealVolume(int paramInt) 
   {
-    float f1 = 100.0F * paramInt / VOLUME_MAX;
+    float f1 = 100.0F * paramInt / volumeMax;
     float f2;
     if (f1 < 20.0F) {
       f2 = f1 * 3.0F / 2.0F;
@@ -337,7 +346,7 @@ public class Settings {
     } else {
       f2 = 20.0F + f1 * 4.0F / 5.0F;
     }
-    return (int) f2;
+    return (int)f2;
   }
   
   //уведомление об изменении громкости
@@ -355,12 +364,13 @@ public class Settings {
 	  
   public void setVolume(int level) 
   {
-    if ((level <= VOLUME_MAX) && (level >= 0))
+    if ((level <= volumeMax) && (level >= 0))
     {
       android.provider.Settings.System.putInt(ctx.getContentResolver(),"av_volume=",level);
+      // android.provider.Settings.System.putInt(ctx.getContentResolver(),"av_phone_volume=",level);
       int mtcLevel = mtcGetRealVolume(level);
       am.setParameters("av_volume="+mtcLevel);
-      am.setParameters("av_phone_volume="+mtcLevel);
+      // am.setParameters("av_phone_volume="+mtcLevel);
       changeVolumeNotify(level);
     }
     else
@@ -375,7 +385,11 @@ public class Settings {
   public void setMute(boolean value)
   {
     am.setParameters("av_mute="+value);
-	am.setStreamMute(am.getMode(), value);
+    am.setStreamMute(am.getMode(), value);
+    if (value)
+      changeVolumeNotify(0);
+    else
+      changeVolumeNotify(getVolume());
   }
     
   /*
@@ -393,9 +407,12 @@ public class Settings {
     // Intent intent = new Intent("com.microntek.light");
     // intent.putExtra("keyCode", (int)(value*255/100));
     // ctx.sendBroadcast(intent);
+    //
+    int value255 = Math.round(value*255/100);
+    am.setParameters("cfg_backlight="+value255);
     ContentResolver cResolver = ctx.getContentResolver();
     android.provider.Settings.System.putInt(cResolver, System.SCREEN_BRIGHTNESS_MODE, System.SCREEN_BRIGHTNESS_MODE_MANUAL);    
-    android.provider.Settings.System.putInt(cResolver, System.SCREEN_BRIGHTNESS, Math.round(value*255/100));
+    android.provider.Settings.System.putInt(cResolver, System.SCREEN_BRIGHTNESS, value255); 
   }
     
   public int getBrightness()
