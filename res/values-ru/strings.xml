@@ -65,7 +65,7 @@
     <string name="ui_adv_settings_apps_movie_text">Видео</string>
     <string name="ui_adv_settings_apps_movie_title">Коррекция громкости для Видео</string>
     <string name="ui_adv_settings_apps_avin_text">AV Вход</string>
-    <string name="ui_adv_settings_apps_avin_title">Коррекция громкости для Видео</string>
+    <string name="ui_adv_settings_apps_avin_title">Коррекция громкости для AV вход</string>
     <string name="ui_adv_settings_apps_ipod_text">IPod</string>
     <string name="ui_adv_settings_apps_ipod_title">Коррекция громкости для IPod</string>
     
