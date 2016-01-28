@@ -191,7 +191,12 @@ public class Settings {
   {
     return (getServiceEnable() && getBoolean("calls.enable",true)); 
   }
-	
+  
+  public boolean getPlayAfterCallsEnable()
+  {
+    return (getServiceEnable() && getBoolean("calls.play_after",true)); 
+  }
+
   public boolean getSafeVolumeEnable()
   {
     return (getServiceEnable() && getBoolean("safevolume.enable",true)); 
@@ -255,6 +260,16 @@ public class Settings {
   public int getBrightnessCorrection()
   {
     return getPrefInteger("brightness.correction",res.getInteger(R.integer.cfg_def_brightness_correction));
+  }
+  
+  public boolean getBrightnessCameraEnabled()
+  {
+    return (getServiceEnable() && getBoolean("brightness.camera.enable",true));
+  }
+  
+  public int getBrightnessCameraLevel()
+  {
+    return getPrefInteger("brightness.camera.level",res.getInteger(R.integer.cfg_def_brightness_day_level));
   }
 	
   public Date getEventDate(String name)

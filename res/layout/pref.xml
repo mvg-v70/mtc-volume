@@ -12,6 +12,13 @@
             android:title="@string/ui_adv_settings_calls_enable_title" >
         </CheckBoxPreference>
         <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="calls.play_after"
+            android:dependency="calls.enable"
+            android:summary="@string/ui_adv_settings_calls_play_after_enable_text"
+            android:title="@string/ui_adv_settings_calls_play_after_enable_title" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
             android:defaultValue="true"
             android:dependency="calls.enable"
             android:key="calls.toast"
@@ -215,6 +222,21 @@
             android:key="brightness.correction"
             android:title="@string/ui_adv_settings_bright_correction_text"
             android:summary="@string/ui_adv_settings_bright_correction_title" >
+        </EditTextPreference>
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:dependency="brightness.enable"
+            android:key="brightness.camera.enable"
+            android:title="@string/ui_adv_settings_bright_backview_enable_text" 
+            android:summary="@string/ui_adv_settings_bright_backview_enable_title" >
+        </CheckBoxPreference>
+        <EditTextPreference
+            android:defaultValue="@integer/cfg_def_brightness_day_level"
+            android:inputType="number"
+            android:dependency="brightness.camera.enable"
+            android:key="brightness.camera.level"
+            android:title="@string/ui_adv_settings_bright_backview_level_text"
+            android:summary="@string/ui_adv_settings_bright_backview_level_title" >
         </EditTextPreference>
         <CheckBoxPreference
             android:defaultValue="true"

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mvgv70.mtcvolume"
-    android:versionCode="2024"
-    android:versionName="@string/app_version" >
+    android:versionCode="2600"
+    android:versionName="@string/app_version" 
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="21" />
     
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -24,7 +25,8 @@
             android:enabled="true"
             android:icon="@drawable/ic_launcher" 
             android:label="ServiceMain" 
-            android:logo="@drawable/ic_launcher">
+            android:logo="@drawable/ic_launcher" 
+            android:permission="android.permission.MODIFY_AUDIO_SETTINGS">
             <intent-filter >
             	<action android:name="com.mvgv70.mtcvolume"></action>
         	</intent-filter>
@@ -32,7 +34,8 @@
         
         <receiver
             android:name="ReceiverBluetooth"
-            android:enabled="true" >
+            android:enabled="true" 
+            tools:ignore="ExportedReceiver" >
             <intent-filter>
                 <action android:name="com.microntek.bt.report" />
                 <action android:name="com.microntek.playpausemusic" />
@@ -41,17 +44,19 @@
 
         <receiver
             android:name="ReceiverBoot"
-            android:enabled="true" >
+            android:enabled="true" 
+            tools:ignore="ExportedReceiver" >
             <intent-filter>
                 <action android:name="com.microntek.startApp" />
                 <action android:name="android.intent.action.BOOT_COMPLETED" /> 
-  				      <action android:name="android.intent.action.QUICKBOOT_POWERON" /> 
+  				<action android:name="android.intent.action.QUICKBOOT_POWERON" /> 
             </intent-filter>
         </receiver>
         
         <receiver
             android:name="ReceiverSafeVolume"
-            android:enabled="true" >
+            android:enabled="true"
+            tools:ignore="ExportedReceiver" >
             <intent-filter>
                 <action android:name="com.microntek.acc" />
             </intent-filter>
@@ -59,7 +64,8 @@
         
         <receiver
             android:name="ReceiverNavitel"
-            android:enabled="true" >
+            android:enabled="true" 
+            tools:ignore="ExportedReceiver" >
             <intent-filter>
                 <action android:name="com.microntek.acc" />
             </intent-filter>
@@ -67,7 +73,8 @@
         
         <receiver
             android:name="ReceiverAppVolume"
-            android:enabled="true" >
+            android:enabled="true" 
+            tools:ignore="ExportedReceiver" >
             <intent-filter>
                 <action android:name="com.microntek.canbusdisplay" />
             </intent-filter>
@@ -80,7 +87,8 @@
         
         <receiver
             android:name="ReceiverBrightness"
-            android:enabled="true" >
+            android:enabled="true"
+            tools:ignore="ExportedReceiver" >
             <intent-filter>
                 <action android:name="com.microntek.startApp" />
                 <action android:name="com.mvg_v70.brightness" />
@@ -102,14 +110,17 @@
         
         <receiver
             android:name="ReceiverBackView"
+            android:exported="false"
             android:enabled="true" >
             <intent-filter>
                 <action android:name="com.microntek.backviewend" />
+                <action android:name="com.microntek.videosignalchange" />
             </intent-filter>
         </receiver>
         
         <receiver
             android:name="ReceiverKeys"
+            android:exported="false"
             android:enabled="true" >
             <intent-filter>
                 <action android:name="com.microntek.irkeyDown" />

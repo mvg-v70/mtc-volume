@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name" translatable="false">MTC-Volume</string>
-    <string name="app_version" translatable="false">2.04</string>
+    <string name="app_version" translatable="false">2.6</string>
     <string name="app_descr">Microntek device volume service</string>
     <string name="app_service_title">MTC-Volume service</string>
     <string name="app_service_on">Service is on</string>
@@ -24,6 +24,8 @@
     <string name="ui_adv_settings_calls">Bluetooth Calls</string>
     <string name="ui_adv_settings_calls_enable_text">Pause at incoming/outgoing calls</string>
     <string name="ui_adv_settings_calls_enable_title">Pause on bluetooth calls</string>
+    <string name="ui_adv_settings_calls_play_after_enable_text">Set play on after call</string>
+    <string name="ui_adv_settings_calls_play_after_enable_title">Set playing on after call</string>
     <string name="ui_adv_settings_calls_toast_text">Show notifications</string>
     <string name="ui_adv_settings_calls_toast_title">Show toast notifications</string>
     
@@ -87,6 +89,10 @@
     <string name="ui_adv_settings_bright_day_level_title">Day level from 1 to 100</string>
     <string name="ui_adv_settings_bright_correction_text">Correction, min</string>
     <string name="ui_adv_settings_bright_correction_title">Brightness time correction, min</string>
+    <string name="ui_adv_settings_bright_backview_enable_text">Change camera brightness</string>
+    <string name="ui_adv_settings_bright_backview_enable_title">Change backview camera brightness</string>
+    <string name="ui_adv_settings_bright_backview_level_text">Cameral level</string>
+    <string name="ui_adv_settings_bright_backview_level_title">Level for backview camera from 1 to 100</string>
     <string name="ui_adv_settings_bright_toast_text">Show notifications</string>
     <string name="ui_adv_settings_bright_toast_title">Show toast notifications</string>
         

@@ -21,6 +21,8 @@
     <string name="ui_adv_settings_calls">Bluetooth звонки</string>
     <string name="ui_adv_settings_calls_enable_text">Пауза при входящем/исходящем звонках</string>
     <string name="ui_adv_settings_calls_enable_title">Пауза при звонках</string>
+    <string name="ui_adv_settings_calls_play_after_enable_text">Включение плеера после звонка</string>
+    <string name="ui_adv_settings_calls_play_after_enable_title">Включение воспроизведения после звонка</string>
     <string name="ui_adv_settings_calls_toast_text">Показывать уведомления</string>
     <string name="ui_adv_settings_calls_toast_title">Показывать короткие пояснения при включении паузы</string>
     
@@ -65,7 +67,7 @@
     <string name="ui_adv_settings_apps_movie_text">Видео</string>
     <string name="ui_adv_settings_apps_movie_title">Коррекция громкости для Видео</string>
     <string name="ui_adv_settings_apps_avin_text">AV Вход</string>
-    <string name="ui_adv_settings_apps_avin_title">Коррекция громкости для AV вход</string>
+    <string name="ui_adv_settings_apps_avin_title">Коррекция громкости для Видео</string>
     <string name="ui_adv_settings_apps_ipod_text">IPod</string>
     <string name="ui_adv_settings_apps_ipod_title">Коррекция громкости для IPod</string>
     
@@ -84,6 +86,10 @@
     <string name="ui_adv_settings_bright_day_level_title">Дневной уровень от 1 до 100</string>
     <string name="ui_adv_settings_bright_correction_text">Коррекция, мин</string>
     <string name="ui_adv_settings_bright_correction_title">Коррекция времени установки яркости, мин. + увеличение светлого времени, - темного</string>
+    <string name="ui_adv_settings_bright_backview_enable_text">Изменять яркость камеры</string>
+    <string name="ui_adv_settings_bright_backview_enable_title">Изменять яркость при включении камеры заднего вида</string>
+    <string name="ui_adv_settings_bright_backview_level_text">Уровень яркости камеры</string>
+    <string name="ui_adv_settings_bright_backview_level_title">Уровень яркости камеры заднего вида от 1 to 100</string>
     <string name="ui_adv_settings_bright_toast_text">Показывать уведомления</string>
     <string name="ui_adv_settings_bright_toast_title">Показывать короткие пояснения при коррекции яркости</string>
 </resources>
