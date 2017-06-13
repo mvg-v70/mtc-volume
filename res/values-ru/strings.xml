@@ -43,6 +43,8 @@
     <string name="ui_adv_settings_speedvol_level_text">Насколько сильно громкость меняется на каждом шаге</string>
     <string name="ui_adv_settings_speedvol_toast_text">Показывать уведомления</string>
     <string name="ui_adv_settings_speedvol_toast_title">Показывать короткие пояснения при коррекции громкости</string>
+    <string name="ui_adv_settings_speedvol_toast_text_ss">Показывать уведомления в скринсейвере</string>
+    <string name="ui_adv_settings_speedvol_toast_title_ss">Показывать короткие пояснения при коррекции громкости в скринсейвере</string>
     
     <string name="ui_adv_settings_pausemute">Mute при нажатии кнопки Пауза</string>
     <string name="ui_adv_settings_pausemute_enable_text">Выключение звука при нажатии кнопки Пауза</string>

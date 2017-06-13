@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name" translatable="false">MTC-Volume</string>
-    <string name="app_version" translatable="false">2.6</string>
+    <string name="app_version" translatable="false">2.7</string>
     <string name="app_descr">Microntek device volume service</string>
     <string name="app_service_title">MTC-Volume service</string>
     <string name="app_service_on">Service is on</string>
@@ -46,6 +46,8 @@
     <string name="ui_adv_settings_speedvol_level_text">Volume level value to change on every step</string>
     <string name="ui_adv_settings_speedvol_toast_text">Show notifications</string>
     <string name="ui_adv_settings_speedvol_toast_title">Show toast notifications</string>
+    <string name="ui_adv_settings_speedvol_toast_text_ss">Show notifications in screensaver</string>
+    <string name="ui_adv_settings_speedvol_toast_title_ss">Show toast notifications in screensaver</string>
     
     <string name="ui_adv_settings_pausemute">Pause as Mute</string>
     <string name="ui_adv_settings_pausemute_enable_text">Enable switch mute with pause press</string>

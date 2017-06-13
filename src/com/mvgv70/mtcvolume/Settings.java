@@ -23,7 +23,7 @@ public class Settings {
 
   // максимальный уровень громкости
   private static float volumeMax = 30f;
-  public static final String LOG_ID = "MTCVOL";
+  public static final String LOG_ID = "mtc-volume";
     
   private ArrayList<Integer> speedValues = new ArrayList<Integer>();
     
@@ -31,6 +31,7 @@ public class Settings {
   private SharedPreferences prefs;
   private AudioManager am;
   private Resources res;
+  private static boolean ss_flag = false;
 
   private static Context ctx;
 
@@ -63,6 +64,11 @@ public class Settings {
     return ctx;
   }
   
+  public static void set_ss_flag(boolean flag)
+  {
+    ss_flag = flag;
+  }
+  
   public String getMcuVersion()
   {
     return am.getParameters("sta_mcu_version=");
@@ -91,7 +97,12 @@ public class Settings {
   public void showSpeedToast(String text)
   {
     if (getBoolean("speed.toast",true))
-     Toast.makeText(ctx, text, Toast.LENGTH_SHORT).show();
+    {
+      Log.d(LOG_ID,"ss_flag="+ss_flag);
+      Log.d(LOG_ID,"speed.toast.ss="+getBoolean("speed.toast.ss",true));
+      if ((ss_flag && getBoolean("speed.toast.ss",true)) || (!ss_flag))
+        Toast.makeText(ctx, text, Toast.LENGTH_SHORT).show();
+    }
   }
 	
   public void showAppToast(String text)

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mvgv70.mtcvolume"
-    android:versionCode="2600"
+    android:versionCode="2700"
     android:versionName="@string/app_version" 
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -17,8 +17,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" 
-        android:theme="@style/AppTheme">
+        android:label="@string/app_name" >
         
         <service
             android:name="ServiceMain"
@@ -29,7 +28,7 @@
             android:permission="android.permission.MODIFY_AUDIO_SETTINGS">
             <intent-filter >
             	<action android:name="com.mvgv70.mtcvolume"></action>
-        	</intent-filter>
+            </intent-filter>
         </service>
         
         <receiver
@@ -49,7 +48,7 @@
             <intent-filter>
                 <action android:name="com.microntek.startApp" />
                 <action android:name="android.intent.action.BOOT_COMPLETED" /> 
-  				<action android:name="android.intent.action.QUICKBOOT_POWERON" /> 
+  		<action android:name="android.intent.action.QUICKBOOT_POWERON" /> 
             </intent-filter>
         </receiver>
         
@@ -120,10 +119,19 @@
         
         <receiver
             android:name="ReceiverKeys"
-            android:exported="false"
             android:enabled="true" >
             <intent-filter>
                 <action android:name="com.microntek.irkeyDown" />
+            </intent-filter>
+        </receiver>
+        
+        <receiver
+            android:name="ReceiverScreenSaver"
+            android:exported="false"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.android.music.querystate" />
+                <action android:name="com.microntek.musicclockreset" />
             </intent-filter>
         </receiver>
 

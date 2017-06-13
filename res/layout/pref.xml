@@ -86,6 +86,13 @@
             android:title="@string/ui_adv_settings_speedvol_toast_text" 
             android:summary="@string/ui_adv_settings_speedvol_toast_title" >
         </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:dependency="speed.toast"
+            android:key="speed.toast.ss"
+            android:title="@string/ui_adv_settings_speedvol_toast_text_ss" 
+            android:summary="@string/ui_adv_settings_speedvol_toast_title_ss" >
+        </CheckBoxPreference>
     </PreferenceCategory>
     
     <PreferenceCategory
